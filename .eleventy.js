@@ -12,8 +12,9 @@ module.exports = function(eleventyConfig) {
     // tell 11ty which files to process and which files to copy while maintaining directory structure
     eleventyConfig.setTemplateFormats(["md","html","njk","css","json", "js"]);
 
+    // Run me after the build ends
     eleventyConfig.on('eleventy.after', async () => {
-        // Run me after the build ends
+        // Find and remove certain files from the build folder
         const pathToBuildFolder = __dirname + "\\_site";
         console.log(pathToBuildFolder);
         var result = findRemoveSync(pathToBuildFolder, { files: '\.11tydata\.js$', regex: true })
