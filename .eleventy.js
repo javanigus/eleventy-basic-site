@@ -1,4 +1,5 @@
 const inspect = require("util").inspect;
+const findRemoveSync = require('find-remove');
 
 module.exports = function(eleventyConfig) {
     // Output directory: _site
@@ -6,18 +7,20 @@ module.exports = function(eleventyConfig) {
     // Copy `css/` to `_site/css`, etc
     //eleventyConfig.addPassthroughCopy("css");
     eleventyConfig.addPassthroughCopy("img");
+    //eleventyConfig.addPassthroughCopy("js");
 
-    eleventyConfig.addPassthroughCopy('**/*.js', "_site", {
-      //filter: path => (path.endsWith('.11tydata.js') == false)
-      // debug
-      filter: path => {
-        const doCopy = (path.endsWith('.11tydata.js') == false)
-        console.log("copy", doCopy, path)
-        return doCopy
-      }
+    // tell 11ty which files to process and which files to copy while maintaining directory structure
+    eleventyConfig.setTemplateFormats(["md","html","njk","css","json", "js"]);
+
+    eleventyConfig.on('eleventy.after', async () => {
+        // Run me after the build ends
+        const pathToBuildFolder = __dirname + "\\_site";
+        console.log(pathToBuildFolder);
+        var result = findRemoveSync(pathToBuildFolder, { files: '\.11tydata\.js$', regex: true })
+        console.log(result);
+        result = findRemoveSync(pathToBuildFolder, { files: ['.eleventy.js', 'package.json', 'package-lock.json'] })
+        console.log(result);
     });
-
-    eleventyConfig.setTemplateFormats(["md","html","njk","css","json"]);
 
     // Values can be static:
     eleventyConfig.addGlobalData("myStatic", "static");
