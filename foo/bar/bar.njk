@@ -1,0 +1,46 @@
+---js
+{
+  layout: "default.njk",
+  variable1: "value1",
+  eleventyComputed: {
+    datum(data) {
+      return data;
+    }
+  }
+}
+---
+<h2>Data from local template front matter</h2>
+<p>variable1: {{variable1}}</p>
+<hr>
+<h2>Data from layout front matter</h2>
+<p>variable2: {{variable2}}</p>
+<hr>
+<h2>Data from local json file</h2>
+<p>variable3: {{variable3}}</p>
+<p>variable4: {{variable4}}</p>
+<p>variable5: {{variable4.variable5}}</p>
+<p>variable7: {{variable7}}</p>
+<p>variable8: {{variable7[0].variable8}}</p>
+<hr>
+<h2>Data from local template 11tydata.js file (available to local template only)</h2>
+<p>variable10: {{variable10}}</p>
+<hr>
+<h2>Data from parent folder 11tydata.js file (available to all child templates)</h2>
+<p>variable15: {{variable15}}</p>
+<hr>
+<h2>Data from global js file in _data folder (available to all templates)</h2>
+<p>variable11: {{data.variable11}}</p>
+<hr>
+<h2>Data from global json file in _data folder (available to all templates)</h2>
+<p>variable12: {{data.variable12}}</p>
+<hr>
+<h2>Data from global json file in subfolder of _data folder (available to all templates)</h2>
+<p>variable13: {{foo.bar.variable13}}</p>
+<hr>
+<h2>Data from global eleventy config file (available to all templates)</h2>
+<p>myStatic: {{myStatic}}</p>
+<p>myFunction: {{myFunction}}</p>
+<hr>
+<h2>Dump of all data</h2>
+<pre><code>{{ datum | debug }}</code></pre>
+

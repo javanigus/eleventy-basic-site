@@ -1,0 +1,42 @@
+---
+title: Home
+layout: default.njk
+---
+
+{# add any meta tags that you want to come before other meta tags #}
+{% layoutblock 'prependMeta' %}
+    {# <meta name="a" content="b"> #}
+{% endlayoutblock %}
+
+{# add any meta tags that you want to come before other meta tags #}
+{% layoutblock 'appendMeta' %}
+    {# <meta name="c" content="d"> #}
+{% endlayoutblock %}
+
+{# add any stylesheets that need to come BEFORE other stylesheets #}
+{% layoutblock 'prependStyles' %}
+    {# <link rel="stylesheet" href="/index.css"> #}
+{% endlayoutblock %}
+
+{# add any stylesheets that need to come AFTER other stylesheets #}
+{% layoutblock 'appendStyles' %}
+    {# <link rel="stylesheet" href="/index.css"> #}
+{% endlayoutblock %}
+
+{# add any scripts that need to go in the head #}
+{% layoutblock 'scriptsInHead' %}
+    {# <script src="/js/x.js"></script> #}
+{% endlayoutblock %}
+
+
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, voluptates distinctio fuga culpa praesentium quis repellat, mollitia vel repudiandae suscipit officiis tempora atque ratione quidem quo facere reiciendis, iste sit!</p>
+
+{# add any scripts that need to go BEFORE other scripts before the closing </body> tag #}
+{% layoutblock 'prependScripts' %}
+    {# <script src="/js/x.js"></script> #}
+{% endlayoutblock %}
+
+{# add any scripts that need to go AFTER other scripts before the closing </body> tag #}
+{% layoutblock 'appendScripts' %}
+    {# <script src="/js/x.js"></script> #}
+{% endlayoutblock %}

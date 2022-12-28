@@ -1,0 +1,13 @@
+{
+    "variable3": "value3",
+    "variable4": {
+        "variable5": "value5",
+        "variable6": "value6"
+    },
+    "variable7": [
+        {
+            "variable8": "value8",
+            "variable9": "value9"
+        }
+    ]
+}
