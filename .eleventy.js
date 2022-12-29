@@ -1,51 +1,59 @@
 const inspect = require("util").inspect;
-const findRemoveSync = require('find-remove');
+// const findRemoveSync = require('find-remove');
 
 module.exports = function(eleventyConfig) {
-    // Output directory: _site
+	eleventyConfig.addPassthroughCopy("src", {
+		debug: true,
+		filter: [
+			"404.html",
+			"**/*.css",
+			"**/*.js",
+			"**/*.json",
+			"!**/*.11ty.js",
+			"!**/*.11tydata.js",
+		]
+	});
   
-    // Copy `css/` to `_site/css`, etc
-    //eleventyConfig.addPassthroughCopy("css");
-    eleventyConfig.addPassthroughCopy("img");
-    //eleventyConfig.addPassthroughCopy("js");
+	// Copy img folder
+	eleventyConfig.addPassthroughCopy("src/img");
 
-    // tell 11ty which files to process and which files to copy while maintaining directory structure
-    eleventyConfig.setTemplateFormats(["md","html","njk","css","json", "js"]);
+	eleventyConfig.setServerPassthroughCopyBehavior("copy");
 
-    // Run me after the build ends
-    eleventyConfig.on('eleventy.after', async () => {
-        // Find and remove certain files from the build folder
-        const pathToBuildFolder = __dirname + "\\_site";
-        console.log(pathToBuildFolder);
-        var result = findRemoveSync(pathToBuildFolder, { files: '\.11tydata\.js$', regex: true })
-        console.log(result);
-        result = findRemoveSync(pathToBuildFolder, { files: ['.eleventy.js', 'package.json', 'package-lock.json'] })
-        console.log(result);
-    });
+	// tell 11ty which files to process and which files to copy while maintaining directory structure
+	// eleventyConfig.setTemplateFormats(["md","html","njk"]);
 
-    // Values can be static:
-    eleventyConfig.addGlobalData("myStatic", "static");
-    // functions:
-    eleventyConfig.addGlobalData("myFunction", () => new Date());
+	// Run me after the build ends
+	eleventyConfig.on('eleventy.after', async () => {
 
-    eleventyConfig.addFilter("debug", (content) => `<pre>${inspect(content)}</pre>`);
+	});
 
-    // add support for blocks
-    eleventyConfig.addShortcode('renderlayoutblock', function(name) {
-        return (this.page.layoutblock || {})[name] || '';
-    });
+	eleventyConfig.ignores.add("src/404.html");
+
+	// Values can be static:
+	eleventyConfig.addGlobalData("myStatic", "static");
+	// functions:
+	eleventyConfig.addGlobalData("myFunction", () => new Date());
+
+	eleventyConfig.addFilter("debug", (content) => `<pre>${inspect(content)}</pre>`);
+
+	// add support for blocks
+	eleventyConfig.addShortcode('renderlayoutblock', function(name) {
+		return (this.page.layoutblock || {})[name] || '';
+	});
   
-    eleventyConfig.addPairedShortcode('layoutblock', function(content, name) {
-        if (!this.page.layoutblock) this.page.layoutblock = {};
-        this.page.layoutblock[name] = content;
-        return '';
-    });
+	eleventyConfig.addPairedShortcode('layoutblock', function(content, name) {
+		if (!this.page.layoutblock) this.page.layoutblock = {};
+		this.page.layoutblock[name] = content;
+		return '';
+	});
 
-    return {
-        dir: {
-        // ⚠️ These values are both relative to your input directory.
-        includes: "_includes",
-        layouts: "_layouts"
-        }
-    }
+	return {
+		dir: {
+			input: "src",
+			output: "www",
+			// ⚠️ These values are both relative to your input directory.
+			includes: "_includes",
+			layouts: "_layouts",
+		}
+	}
 };
