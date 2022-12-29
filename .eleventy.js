@@ -1,5 +1,4 @@
 const inspect = require("util").inspect;
-// const findRemoveSync = require('find-remove');
 
 module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("src", {
