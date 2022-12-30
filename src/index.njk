@@ -3,12 +3,12 @@ title: Home
 layout: default.njk
 ---
 
-{# add any meta tags that you want to come before other meta tags #}
+{# add any meta tags that you want to come BEFORE other meta tags #}
 {% layoutblock 'prependMeta' %}
     {# <meta name="a" content="b"> #}
 {% endlayoutblock %}
 
-{# add any meta tags that you want to come before other meta tags #}
+{# add any meta tags that you want to come AFTER other meta tags #}
 {% layoutblock 'appendMeta' %}
     {# <meta name="c" content="d"> #}
 {% endlayoutblock %}
