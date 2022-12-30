@@ -2,7 +2,7 @@ const inspect = require("util").inspect;
 
 module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("src", {
-		debug: true,
+		//debug: true,
 		filter: [
 			"404.html",
 			"**/*.css",

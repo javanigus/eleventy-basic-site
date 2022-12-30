@@ -1,0 +1,33 @@
+---js
+{
+  layout: "default.njk",
+  title: "Loop over and display JSON data",
+  eleventyComputed: {
+    datum(data) {
+      return data;
+    }
+  }
+}
+---
+<h2>{{ title }}</h2>
+<p>This page tests displaying data from multiple local JSON files. </p>
+
+<h3>Items</h3>
+<ul>
+{% for item in items %}
+  <li>{{ item.id }} - {{ item.title }}</li>
+{% else %}
+  <li>This would display if the 'item' collection were empty</li>
+{% endfor %}
+</ul>
+
+<h3>Menu</h3>
+<ul>
+{% for item in menu.popup.menuitem %}
+  <li>{{ item.value }}</li>
+{% else %}
+  <li>This would display if the 'item' collection were empty</li>
+{% endfor %}
+</ul>
+
+<pre><code>{{ datum | debug }}</code></pre>
