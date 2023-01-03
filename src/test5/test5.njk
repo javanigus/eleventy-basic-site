@@ -12,3 +12,11 @@ layout: "default.njk"
     primary: 'Hello',
     secondary: 'World'
   }) }}
+
+<hr>
+
+{{ component('note') }}
+
+{{ component('note', {
+    show2ndMsg: true
+}) }}
