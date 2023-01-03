@@ -1,0 +1,14 @@
+---
+title: "Component Macro"
+layout: "default.njk"
+---
+{%- from "component.njk" import component -%}
+
+  {{ component('button', {
+    primary: 'Hello'
+  }) }}
+
+  {{ component('button', {
+    primary: 'Hello',
+    secondary: 'World'
+  }) }}
