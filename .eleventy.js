@@ -36,15 +36,22 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addFilter("debug", (content) => `<pre>${inspect(content)}</pre>`);
 
 	// add support for blocks
-	eleventyConfig.addShortcode('renderlayoutblock', function(name) {
-		return (this.page.layoutblock || {})[name] || '';
-	});
+    eleventyConfig.addShortcode('renderlayoutblock', function(name) {
+        //return (this.page.layoutblock || {})[name] || '';
+        var blockContent = '';
+        if (this.page.layoutblock && this.page.layoutblock[name]) {
+            blockContent = this.page.layoutblock[name];
+        } 
+        return blockContent;
+    });
   
-	eleventyConfig.addPairedShortcode('layoutblock', function(content, name) {
-		if (!this.page.layoutblock) this.page.layoutblock = {};
-		this.page.layoutblock[name] = content;
-		return '';
-	});
+    eleventyConfig.addPairedShortcode('layoutblock', function(content, name) {
+        if (!this.page.layoutblock) {
+            this.page.layoutblock = {};
+        }
+        this.page.layoutblock[name] = content;
+        return '';
+    });
 
 	return {
 		dir: {
