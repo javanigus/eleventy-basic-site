@@ -1,0 +1,18 @@
+---js
+{
+  title: "Test Fetching JSON From Remote URL with Caching",
+  layout: "default.njk",
+  eleventyComputed: {
+    datum(data) {
+      return data;
+    }
+  }
+}
+---
+<h1>{{title}}</h1>
+
+<ul>
+{% for color in colors %}
+    <li>ID: {{color.id}} - Color: {{color.color}}</li>
+{% endfor %}
+</ul>
