@@ -1,5 +1,5 @@
 # Eleventy (11ty) Starter Site
-A basic starter site for creating eleventy static websites. The live starter site is at https://enchanting-malabi-4c2a4e.netlify.app/.
+A basic starter site for creating eleventy static websites. The live starter site is at https://my11tywebsite.netlify.app/.
 
 This starter site has example files and code to demonstrate some 11ty features including:
 * layout inheritance
