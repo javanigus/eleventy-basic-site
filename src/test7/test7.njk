@@ -1,0 +1,16 @@
+---
+title: "Test Environment Variables"
+layout: "default.njk"
+---
+
+<h1>{{title}}</h1>
+
+site.environment = {{ site.environment }}
+
+{% if site.environment == "production" %}
+    <p>I'm running in production</p>
+{% elseif site.environment == "staging" %}
+    <p>I'm running in staging</p>
+{% elseif site.environment == "development" %}
+    <p>I'm running in development</p>
+{% endif %}
