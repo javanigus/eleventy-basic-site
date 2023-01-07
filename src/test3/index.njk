@@ -1,15 +1,15 @@
 ---
 layout: default.njk
 title: Test override output folder
-permalink: "www/_includes/test3.html"
+permalink: "www/abc/index.html"
 permalinkBypassOutputDir: true
 ---
 
 <h2>{{ title }}</h2>
-<p>In this setup, the build output folder is "www". That can be overridden for specific pages. This page is output in the _includes folder by adding </p>
+<p>In this setup, the page template is located at /site/test3/index.njk, so the build output path would be "www/test3/index.html". That can be overridden. For example, this page is output in abc new folder called "abc" by adding </p>
 
 <p>
-permalink: "www/_includes/test3.html"
+permalink: "www/abc/index.html"
 permalinkBypassOutputDir: true
 </p>
 
