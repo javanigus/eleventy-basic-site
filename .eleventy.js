@@ -5,7 +5,7 @@ module.exports = function(eleventyConfig) {
 		//debug: true,
 		filter: [
 			"404.html",
-			".redirects",
+			"_redirects",
 			"**/*.css",
 			"**/*.js",
 			"**/*.json",
