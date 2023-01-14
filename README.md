@@ -13,6 +13,6 @@ All templates are Nunjucks (.njk) templates because I prefer it over all other t
 
 This starter site includes HTML5 boilerplate.
 
-Clone this repo and delete the example code you don't need.
+Clone this repo and delete the example code you don't need..
 
 For more info, visit my blog post about this at http://www.abdullahyahya.com/2022/06/generate-a-static-website-with-11ty-eleventy/
