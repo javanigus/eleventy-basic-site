@@ -1,0 +1,18 @@
+---
+title: "Test Svelte App"
+layout: "default.njk"
+---
+
+{# add any stylesheets that need to come AFTER other stylesheets #}
+{% layoutblock 'appendStyles' %}
+    <link rel="stylesheet" href="index-58dd07d8.css">
+{% endlayoutblock %}
+
+{# add any scripts that need to go AFTER other scripts before the closing </body> tag #}
+{% layoutblock 'appendScripts' %}
+    <script src="index-a1695af6.js"></script>
+{% endlayoutblock %}
+
+<h1>{{title}}</h1>
+
+<div id="app"></div>
