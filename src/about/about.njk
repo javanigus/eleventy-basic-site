@@ -2,5 +2,22 @@
 layout: default.njk
 title: About
 ---
+
+{% css 'about/index.css' %}
+{% include "about/index.css" %}
+{% endcss %}
+
+{% layoutblock 'appendStyles' %}
+    <link data-src="about/index.css" rel="stylesheet" href="{% getBundleFileUrl "css", "about/index.css" %}">
+{% endlayoutblock %}
+
 <h2>{{ title }}</h2>
 <p>This is the about page.</p>
+
+{% js 'about/index.js' %}
+{% include "about/index.js" %}
+{% endjs %}
+
+{% layoutblock 'appendScripts' %}
+    <link data-src="about/index.js" rel="stylesheet" href="{% getBundleFileUrl "js", "about/index.js" %}">
+{% endlayoutblock %}
