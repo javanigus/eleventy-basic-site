@@ -1,4 +1,5 @@
 const inspect = require("util").inspect;
+const bundlerPlugin = require("@11ty/eleventy-plugin-bundle");
 
 module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("src", {
@@ -54,6 +55,8 @@ module.exports = function(eleventyConfig) {
         return '';
     });
 
+	eleventyConfig.addPlugin(bundlerPlugin);
+	
 	return {
 		dir: {
 			input: "src",
