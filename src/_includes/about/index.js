@@ -1,3 +1,3 @@
 (function() {
-    // put some JS here
+    // put some JavaScript here
   }());
