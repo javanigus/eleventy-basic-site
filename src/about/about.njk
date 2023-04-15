@@ -2,5 +2,13 @@
 layout: default.njk
 title: About
 ---
+{% layoutblock 'appendStyles' %}
+    <link rel="stylesheet" href="/about/index.css">
+{% endlayoutblock %}
+
+{% layoutblock 'appendScripts' %}
+    <script src="/about/index.js"></script>
+{% endlayoutblock %}
+
 <h2>{{ title }}</h2>
 <p>This is the about page.</p>
