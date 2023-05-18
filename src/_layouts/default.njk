@@ -1,6 +1,13 @@
----
-variable1: a
-variable2: value2
+---js
+{
+  variable1: "a",
+  variable2: "value2",
+  eleventyComputed: {
+    datum(data) {
+      return data;
+    }
+  }
+}
 ---
 
 <!doctype html>
@@ -33,10 +40,16 @@ variable2: value2
         {{ content | safe }}
     </main>
   </div>
-  {% include "footer.html" %}
+  {% include "footer.njk" %}
   {% renderlayoutblock 'prependScripts' %}
   {% include "scripts.html" %}
   {% renderlayoutblock 'appendScripts' %}
 </body>
 
 </html>
+site.environment = {{site.environment}}
+{% if site.environment === "development" %}
+	<h1>For Debugging</h1>
+	<h2>All variables available on this page </h2>
+	<pre><code>{{ datum | debug }}</code></pre>
+{% endif %}
