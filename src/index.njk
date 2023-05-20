@@ -32,6 +32,26 @@ layout: default.njk
 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, voluptates distinctio fuga culpa praesentium quis repellat, mollitia vel repudiandae suscipit officiis tempora atque ratione quidem quo facere reiciendis, iste sit!</p>
 
 <h2>DEF</h2>
+
+{% set data = {
+		"dark": "true",
+		"quote": [{
+			"text": "Integration was one of our key challenges as we were going through a consolidation of many tools. Bringing everything together and getting visibility in one Qualys dashboard has helped us. Now we have a dashboard where we’re able to see everything and take action quickly.”",
+			"citeRole": "VP & CISO, TiVo Corporation",
+			"citeName": "Hemanta Swain",
+			"headshot": "hemanta-swain-64-2x.png"
+		}]
+	}
+%}
+
+{{ data.dark }}
+<ul>
+{% for quote in data.quote %}
+  <li>{{ quote.text }}</li>
+  <li>{{ quote.citeRole }}</li>
+{% endfor %}
+</ul>
+
 {# add any scripts that need to go BEFORE other scripts before the closing </body> tag #}
 {% layoutblock 'prependScripts' %}
     {# <script src="/js/x.js"></script> #}
